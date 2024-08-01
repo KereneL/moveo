@@ -5,21 +5,23 @@ import { useSocketContext } from '../context/SocketContext';  // Adjust path as 
 import SongLookup from './SongLookup';
 import SongDisplay from './SongDisplay';
 
-const SongSelection = () => {
+const SongSelection = ({ musicalRole }) => {
     const { authUser } = useAuthContext();
     const { selectedSong } = useSocketContext();
 
     if (selectedSong) {
         return (
-                <SongDisplay selectedSong={selectedSong} />
+            <SongDisplay selectedSong={selectedSong} />
         );
     } else {
         return (
             <div>
-                <Card.Title className="mb-4">
+                <Card.Title>
                     Welcome, <span>{authUser.username} {(authUser.isAdmin) ? "🗝" : ""}</span>
                 </Card.Title>
-
+                <Card.Text className="mb-4">
+                    Musical Role: {musicalRole}
+                </Card.Text>
                 {authUser.isAdmin ? (
                     <div>
                         <Card.Text>
@@ -29,7 +31,7 @@ const SongSelection = () => {
                     </div>
                 ) : (
                     <div>
-                        <Card.Text>
+                        <Card.Text className="text-danger">
                             Waiting for admin to select a song for this jam session...
                         </Card.Text>
                     </div>

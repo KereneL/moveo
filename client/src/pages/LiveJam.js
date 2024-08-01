@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { Card } from 'react-bootstrap'
-import LogoutButton from '../components/LogoutButton';
+import { useAuthContext } from '../context/AuthContext';
 import { useSocketContext } from '../context/SocketContext'; // Adjust the path to your SocketContext
+import LogoutButton from '../components/LogoutButton';
 import SongSelection from '../components/SongSelection';
 
 export const LiveJam = () => {
     const { socket } = useSocketContext();
+    const { authUser } = useAuthContext();
 
     useEffect(() => {
         if (socket) {
@@ -27,6 +29,8 @@ export const LiveJam = () => {
         }
     }, [socket]);
 
+    const musicalRole = authUser ? authUser.musicalRole : 'Not assigned';
+
     return (
         <div className="d-flex justify-content-center">
             <Card style={{ width: "40rem" }}>
@@ -35,8 +39,9 @@ export const LiveJam = () => {
                     <Card.Title className="mb-0 fs-3" >🎶 Live Jam</Card.Title>
                     <LogoutButton />
                 </Card.Header>
+
                 <Card.Body>
-                    <SongSelection />
+                    <SongSelection musicalRole={musicalRole}/>
                 </Card.Body>
             </Card>
         </div>
