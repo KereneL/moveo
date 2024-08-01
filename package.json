@@ -7,8 +7,9 @@
   "dependencies": {},
   "scripts": {
     "install:client": "cd client && yarn install",
+    "build:client": "cd client && yarn build",
     "install:server": "cd server && yarn install",
-    "build": "yarn run install:server && yarn run install:client",
+    "build": "yarn run install:server && yarn run install:client && yarn run build:client",
     "start:server": "node server/index.js",
     "start": "yarn run install:client",
     "dev": "cd client && yarn install && cd .. && nodemon server/index.js"
