@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'react-bootstrap'
 import { useAuthContext } from '../context/AuthContext';
 import { useSocketContext } from '../context/SocketContext';  // Adjust path as necessary
 import SongLookup from './SongLookup';
@@ -10,18 +11,28 @@ const SongSelection = () => {
 
     if (selectedSong) {
         return (
-            <div>
-                <h1>Current Song: {selectedSong.name}</h1>
-                <SongDisplay selectedSong={selectedSong}/>
-            </div>
+                <SongDisplay selectedSong={selectedSong} />
         );
     } else {
         return (
             <div>
+                <Card.Title className="mb-4">
+                    Welcome, <span>{authUser.username} {(authUser.isAdmin) ? "🗝" : ""}</span>
+                </Card.Title>
+
                 {authUser.isAdmin ? (
-                    <SongLookup />
+                    <div>
+                        <Card.Text>
+                            Please choose a song for this jam session:
+                        </Card.Text>
+                        <SongLookup />
+                    </div>
                 ) : (
-                    <p>SongSelection: Waiting for admin to select a resource...</p>
+                    <div>
+                        <Card.Text>
+                            Waiting for admin to select a song for this jam session...
+                        </Card.Text>
+                    </div>
                 )}
             </div>);
 

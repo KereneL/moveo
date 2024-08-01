@@ -1,6 +1,6 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { useAuthContext } from "../context/AuthContext"
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useAuthContext } from '../context/AuthContext'
 
 const useLogin = () => {
 	const [loading, setLoading] = useState(false);
@@ -13,8 +13,8 @@ const useLogin = () => {
 		setLoading(true);
 		try {
 			const response = await fetch(`${apiUrl}/auth/login`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				method: 'POST',
+				headers: { "Content-Type": 'application/json' },
 				body: JSON.stringify({ username, password }),
 			});
 

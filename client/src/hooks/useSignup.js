@@ -1,6 +1,6 @@
-import { useState } from  "react";
-import toast from  "react-hot-toast";
-import { useAuthContext } from "../context/AuthContext";
+import { useState } from  'react';
+import toast from  'react-hot-toast';
+import { useAuthContext } from '../context/AuthContext';
 
 const useSignup = () => {
 	const [loading, setLoading] = useState(false);
@@ -14,11 +14,11 @@ const useSignup = () => {
 
 		setLoading(true);
 		try {
-			if (!musicalRole) musicalRole="Vocalist"
+			if (!musicalRole) musicalRole='Vocalist'
 
 			const response = await fetch(`${apiUrl}/auth/signup`, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				method: 'POST',
+				headers: { "Content-Type": 'application/json' },
 				body: JSON.stringify({ username, password, musicalRole, isAdmin }),
 			});
 

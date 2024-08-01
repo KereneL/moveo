@@ -16,20 +16,18 @@ export const LoginForm = () => {
   return (
     <Form onSubmit={(event) => handleSubmit(event)}>
       {/* username */}
-      <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
+      <Form.Group controlId="formBasicUsername" className="mb-2">
         <Form.Control
           type="text"
           name="username"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
-          placeholder="Enter username"
+          placeholder="Username"
         />
       </Form.Group>
 
       {/* password */}
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+      <Form.Group controlId="formBasicPassword" className="mb-2">
         <Form.Control
           type="password"
           name="password"
@@ -40,14 +38,15 @@ export const LoginForm = () => {
       </Form.Group>
 
       {/* submit button */}
+      <div className="d-grid my-4">
       <Button
         variant="primary"
         type="submit"
         onSubmit={(event) => handleSubmit(event)}
-        className="m-3"
       >
         Login
       </Button>
+      </div>
     </Form>
   );
 }

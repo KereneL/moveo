@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
+import { Card } from 'react-bootstrap'
 import LogoutButton from '../components/LogoutButton';
-import { useAuthContext } from '../context/AuthContext';
 import { useSocketContext } from '../context/SocketContext'; // Adjust the path to your SocketContext
 import SongSelection from '../components/SongSelection';
-//import { Jam } from '../components/Jam'
 
 export const LiveJam = () => {
-    const { authUser } = useAuthContext();
     const { socket } = useSocketContext();
 
     useEffect(() => {
@@ -31,15 +29,16 @@ export const LiveJam = () => {
 
     return (
         <div className="d-flex justify-content-center">
-            <div className="p-3">
+            <Card style={{ width: "40rem" }}>
 
-                <h3>Welcome to the Live Jam, <span>{authUser.username} {(authUser.isAdmin) ? "🗝" : ""}</span></h3>
-                <br />
-                <SongSelection />
-                <br />
-                <LogoutButton />
-
-            </div>
+                <Card.Header className="d-flex justify-content-between ">
+                    <Card.Title className="mb-0 fs-3" >🎶 Live Jam</Card.Title>
+                    <LogoutButton />
+                </Card.Header>
+                <Card.Body>
+                    <SongSelection />
+                </Card.Body>
+            </Card>
         </div>
     )
 };

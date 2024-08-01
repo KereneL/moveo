@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'react-bootstrap'
 import { SignUpForm } from '../components/SignUpForm'
 import { Link } from 'react-router-dom'
 
@@ -6,19 +7,20 @@ export const SignUp = ({ isAdmin }) => {
 
 	return (
 		<div className="d-flex justify-content-center">
-			<div className="w-50 p-3">
-
-				<h2 className="p-3">Sign up{isAdmin ? " - Admin" : ""}</h2>
-				<SignUpForm isAdmin={isAdmin} />
-
-				<div className="p-3">
-					<Link to="/login" href="#">Login</Link><br />
+			<Card style={{ width: "20rem" }} border="primary">
+				<Card.Header>
+					<Card.Title className="mb-0">
+						Sign up{isAdmin ? " - Admin" : ""}
+					</Card.Title>
+				</Card.Header>
+				<Card.Body>
+					<SignUpForm isAdmin={isAdmin} />
+					<Card.Link to="/signup" href="#">Sign up</Card.Link><br />
 					<Link to={isAdmin ? "/signup" : "/signup-admin"} href="#">
 						{isAdmin ? "Signup (not as admin)" : "Signup (as admin)"}
 					</Link>
-				</div>
-			</div>
+				</Card.Body>
+			</Card>
 		</div>
-
 	)
 }

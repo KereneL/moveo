@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, Table } from 'react-bootstrap'
 import { useAuthContext } from '../context/AuthContext';
 
 const SongDisplay = function ({ selectedSong }) {
@@ -6,24 +7,39 @@ const SongDisplay = function ({ selectedSong }) {
   const { authUser } = useAuthContext();
 
   return (
-      <table>
+    <div>
+      <Card.Title className="mb-4">
+        Current song: <span className="text-capitalize">{selectedSong.name}</span>
+      </Card.Title>
+      <Table>
         <tbody>
           {selectedSong.raw.map((line, lineIndex) => (
-            <tr key={lineIndex}>
+            <tr>
               {line.map((part, partIndex) => (
-                <td key={partIndex}>
-                  <table className="nested">
+                <td className="align-bottom m-0">
+                  <Table className="nested m-0">
                     <tbody>
-                      {(authUser.musicalRole==="Vocalist")?"":<tr><td><strong>{part.chords}</strong></td></tr>}
-                      <tr><td>{part.lyrics}</td></tr>
+                      <tr>
+                        <td className={authUser.musicalRole === "Vocalist" ? "d-none" : "text-start"}>
+                          <strong className="align-bottom text-success">
+                            {part.chords}
+                          </strong>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="align-bottom m-0">
+                          {part.lyrics}
+                        </td>
+                      </tr>
                     </tbody>
-                  </table>
+                  </Table>
                 </td>
               ))}
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
+    </div>
   );
 }
 
