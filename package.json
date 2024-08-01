@@ -9,7 +9,7 @@
     "install:client": "cd client && yarn install",
     "install:server": "cd server && yarn install",
     "build": "cd client && yarn run build",
-    "start:server": "cd server && node index.js",
+    "start:server": "node server/index.js",
     "start": "yarn run build && yarn run start:server",
     "dev": "cd client && yarn install && cd .. && cd server && nodemon server/index.js"
   },
