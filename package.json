@@ -11,7 +11,7 @@
     "build": "cd client && yarn run build",
     "start:server": "cd server && node index.js",
     "start": "yarn run build && yarn run start:server",
-    "dev": "install:client && install:server && cd server && yarn run dev"
+    "dev": "cd client && yarn install && cd .. && cd server && nodemon server/index.js"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
