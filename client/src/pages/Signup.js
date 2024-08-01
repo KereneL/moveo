@@ -14,7 +14,7 @@ export const SignUp = ({ isAdmin }) => {
 				</Card.Header>
 				<Card.Body>
 					<SignUpForm isAdmin={isAdmin} />
-					<Card.Link href="/signup">Sign up</Card.Link><br />
+					<Card.Link href="/login">Login</Card.Link><br />
 					<Card.Link href={isAdmin ? "/signup" : "/signup-admin"}>
 						{isAdmin ? "Signup (not as admin)" : "Signup (as admin)"}
 					</Card.Link>
