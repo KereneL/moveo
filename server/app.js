@@ -17,12 +17,6 @@ const app = express()
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
-app.use((request, response, next) => {
-    response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE');
-    response.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-    next();
-});
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, '../public')));

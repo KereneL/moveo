@@ -7,6 +7,7 @@ dotenv.config();
 const port = process.env.PORT || '5000';
 const API_URL = process.env.REACT_APP_API_URL;
 
+// set port to app
 app.set('port', port);
 
 // for debugging purposes
