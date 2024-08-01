@@ -23,13 +23,21 @@ app.use((request, response, next) => {
     response.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
     next();
 });
+
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Routing
 app.use("/auth", authRoutes);
 app.use("/songs", songsRoutes)
 app.use("/jam", jamRoutes)
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 // Start the HTTP server
 const server = http.createServer(app);
