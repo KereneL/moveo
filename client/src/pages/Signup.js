@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { SignUpForm } from '../components/SignUpForm'
-import { Link } from 'react-router-dom'
 
 export const SignUp = ({ isAdmin }) => {
 
@@ -15,10 +14,10 @@ export const SignUp = ({ isAdmin }) => {
 				</Card.Header>
 				<Card.Body>
 					<SignUpForm isAdmin={isAdmin} />
-					<Card.Link to="/signup" href="#">Sign up</Card.Link><br />
-					<Link to={isAdmin ? "/signup" : "/signup-admin"} href="#">
+					<Card.Link href="/signup">Sign up</Card.Link><br />
+					<Card.Link href={isAdmin ? "/signup" : "/signup-admin"}>
 						{isAdmin ? "Signup (not as admin)" : "Signup (as admin)"}
-					</Link>
+					</Card.Link>
 				</Card.Body>
 			</Card>
 		</div>

@@ -15,8 +15,8 @@ export const Login = () => {
 				<Card.Body>
 
 					<LoginForm />
-					<Card.Link to="/signup" href="#">Sign up</Card.Link><br />
-					<Card.Link to="/signup-admin" href="#">Sign up (as admin)</Card.Link>
+					<Card.Link href="/signup">Sign up</Card.Link><br />
+					<Card.Link href="/signup-admin">Sign up (as admin)</Card.Link>
 				</Card.Body>
 			</Card>
 		</div>
