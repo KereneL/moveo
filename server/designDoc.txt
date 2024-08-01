@@ -1,0 +1,21 @@
+
+
+JaMoveo Design Doc
+
+access at 'loginPage':
+    > logged user is admin - go to 'mainPage'
+    > logged user is player - go to 'mainPage'
+
+access at 'adminSignupPage':
+    > registered user is admin - go to 'mainPage'
+
+access at 'signupPage':
+    > registered user is player - go to 'mainPage'
+
+---
+
+at 'mainPage':
+    > user is admin - show 'Search any song...', then go to 'resultsPage', then go to 'livePage' (with selection)
+    > user is player - show 'Waiting for next song', go with admin to 'livePage'
+
+at 'livePage':
